@@ -1,0 +1,26 @@
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+.image-container {
+    height: 200px;
+    /* Set a fixed height for the container */
+    overflow: hidden;
+    /* Hide any overflow beyond the set height */
+}
+
+.image-container img {
+    height: 100%;
+    width: 350px;
+    /* Make the image take 100% of the container height */
+    object-fit: cover;
+    /* Maintain aspect ratio and cover the container */
+}
+
+.custom-card {
+    max-width: 600px;
+}
+
+.container {
+    max-width: 600px;
+}

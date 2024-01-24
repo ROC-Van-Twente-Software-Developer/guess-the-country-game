@@ -74,9 +74,6 @@ function setNewRound() {
                 // Put flag in div
                 const imageField = document.getElementById("flag");
                 imageField.innerHTML = `<img src='../../countries/${rightAnswer}.png' alt='' class='img-fluid'>`;
-
-                console.log(data.fileNameWithoutExtension);
-
                 // Give attribute maxlength to input
                 inputField.setAttribute("maxlength", rightAnswer.length);
 
@@ -150,10 +147,12 @@ function compareWords(input, answer) {
 }
 
 let timerInterval;
+var roundSeconds = (window.roundtime == null) ? 60 : window.roundtime;
+
 
 function startTimer() {
     // Set the initial time in milliseconds
-    let timeRemaining = 60 * 1000; // 60 seconds
+    let timeRemaining = roundSeconds * 1000; // 60 seconds
 
     // Get the timer element
     const timerElement = document.getElementById('timer');
@@ -171,13 +170,37 @@ function startTimer() {
             if (timeRemaining <= 0) {
                 clearInterval(timerInterval);
                 timerElement.textContent = '00:000';
-                let gameFrame = document.getElementById('gameFrame');
-                gameFrame.style.display = 'none';
-                document.getElementById('timerLine').style.display = 'none'
-
+                document.getElementById('gameFrame').style.display = 'none';
+                document.getElementById('resultForm').style.display = 'block';
+                document.getElementById('timerLine').style.display = 'none';
+                saveGameResults(document.getElementById('score').innerText, roundSeconds);
             } else {
                 timeRemaining -= 10;
             }
         }, 10);
     }
 }
+
+function saveGameResults(score, roundTime) {
+    var resultScoreInput = document.getElementById('resultScore');
+    var resultRoundTimeInput = document.getElementById('resultRoundTime');
+    var resultTimeDateInput = document.getElementById('resultTimeDate');
+    // Save round results as values of inputs
+    resultScoreInput.value = score;
+    resultRoundTimeInput.value = roundTime;
+    resultTimeDateInput.value = getCurrentDateTime();
+}
+
+function getCurrentDateTime() {
+    const now = new Date();
+  
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+  
+    const formattedDateTime = `${year}-${month}-${day}-${hours}-${minutes}-${seconds}`;
+    return formattedDateTime;
+  }

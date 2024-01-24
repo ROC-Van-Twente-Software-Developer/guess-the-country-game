@@ -6,5 +6,5 @@ $pass = 'bit_academy';
 try {
     $db = new PDO('mysql:host=localhost;dbname=guess_country_game', $user, $pass);
 } catch (PDOException $e) {
-    die("Something went wrong while attemping connect to gb. Did you have changed username and password in db_connection.php?");
+    die("Something went wrong while attemping connect to db. Did you have changed username and password in db_connection.php?");
 }

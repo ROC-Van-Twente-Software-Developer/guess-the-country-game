@@ -21,6 +21,6 @@ body {
     max-width: 600px;
 }
 
-.container {
-    max-width: 600px;
+.main-container {
+    height: 100vh;
 }

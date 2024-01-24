@@ -1,3 +1,6 @@
+<?php
+$roundtime = $_GET['roundtime'] != null ? $_GET['roundtime'] : 60; // default to 60 seconds
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Game</title>
+    <script>
+        var roundtime = <?php echo json_encode($roundtime); ?>;
+    </script>
     <script src="../../js/script.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -16,21 +22,29 @@
 </head>
 
 <body>
-    <div class="container d-flex justify-content-center flex-column">
-        <div class="card custom-card mt-5 bg-dark text-white" id="gameFrame" style="display: none;">
-            <div class="card-header">Country Game</div>
-            <div class="card-body">
-                <h5 class="card-title mb-5">Flag</h5>
-                <div id="flag" class="image-container mt-3 mb-3"></div>
-                <label for="answer" class="form-label">Name?</label>
-                <input type="text" id="answer" class="form-control" name="land" autocomplete="none">
-                <button id="button" class="btn btn-primary mt-3" onclick="checkAnswer()">Answer</button>
-                <h1 id="userAnswerLine" class="mb-3 text-center fs-4"></h1>
-                <h1 id="resultLine" class="text-center fs-4"></h1>
+    <div class="container main-container d-flex justify-content-center align-items-center">
+        <div class="container d-flex justify-content-center align-items-center flex-column">
+            <div class="card custom-card mt-5 bg-dark text-white" id="gameFrame" style="display: none;">
+                <div class="card-header">Country Game</div>
+                <div class="card-body">
+                    <h5 class="card-title mb-5">Flag</h5>
+                    <div id="flag" class="image-container mt-3 mb-3"></div>
+                    <label for="answer" class="form-label">Name?</label>
+                    <input type="text" id="answer" class="form-control" name="land" autocomplete="none">
+                    <button id="button" class="btn btn-primary mt-3" onclick="checkAnswer()">Answer</button>
+                    <h1 id="userAnswerLine" class="mb-3 text-center fs-4"></h1>
+                    <h1 id="resultLine" class="text-center fs-4"></h1>
+                </div>
             </div>
+            <h3 class="m-3" style="display: none;" id="scoreLine">Score: <strong id="score">0</strong> </h3>
+            <h3 class="m-3" style="display: none;" id="timerLine">Time left: <strong id="timer">60:000</strong></h3>
+            <form action="../index.php" method="POST" style="display: none;" id="resultForm">
+                <input type="hidden" id="resultScore" name="resultScore">
+                <input type="hidden" id="resultRoundTime" name="resultRoundTime">
+                <input type="hidden" id="resultTimeDate" name="resultTimeDate">
+                <input type="submit" class="btn btn-success" value="Go to home page">
+            </form>
         </div>
-        <h3 class="m-3" style="display: none;" id="scoreLine">Score: <strong id="score">0</strong> </h3>
-        <h3 class="m-3" style="display: none;" id="timerLine">Time left: <strong id="timer">60:000</strong></h3>
     </div>
 
     <!-- Start screen element -->

@@ -31,7 +31,6 @@ To start the game on your local machine:
 
 ## Contributing
 Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
-Fork the repository.
 
 1. Create a new branch for your feature:
 ```bash

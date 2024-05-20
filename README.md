@@ -2,6 +2,9 @@
 
 Guess the Country Name is an engaging and interactive game where players are presented with images of different countries and challenged to identify them. The game combines visual recognition skills with geography knowledge, providing an entertaining way to test and enhance your familiarity with countries around the world.
 
+![image](https://github.com/ROC-Van-Twente-Software-Developer/guess-the-country-game/assets/153517480/14b9ce29-472b-4748-a638-2aa24c4a6b7f)
+
+
 ## Table of Contents
 
 - [Features](#features)
